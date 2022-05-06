@@ -6,19 +6,24 @@ public class SideMapCubeMovement : MonoBehaviour
 {
     private float beginTime;
     private Animation animation;
+    private bool hasPlayed = false;
 
     void Start()
     {
-        beginTime = BeginTime();
-        Debug.Log(beginTime);
         animation = GetComponent<Animation>();
+        if (gameObject.tag == "CubePortal") {
+            beginTime = 5;
+            animation.wrapMode = WrapMode.Once;
+        } else {
+            beginTime = BeginTime();
+        }
+        Debug.Log(beginTime);
     }
 
     void Update() {
-        if(!animation.isPlaying) {
-            if (Time.realtimeSinceStartup > beginTime) {
-                animation.Play();
-            }
+        if((!hasPlayed) && (Time.realtimeSinceStartup > beginTime)) {
+            hasPlayed = true;
+            animation.Play();
         }
     }
 

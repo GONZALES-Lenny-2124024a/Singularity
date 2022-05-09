@@ -17,7 +17,6 @@ public class SideMapCubeMovement : MonoBehaviour
         } else {
             beginTime = BeginTime();
         }
-        Debug.Log(beginTime);
     }
 
     void Update() {

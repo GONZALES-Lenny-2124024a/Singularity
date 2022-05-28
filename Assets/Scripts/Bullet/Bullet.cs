@@ -24,6 +24,10 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collisionObject) {
+        if(collisionObject.gameObject.tag == "Player") {
+            Destroy(collisionObject.gameObject);
+        }
+
         Bounce(collisionObject.contacts[0].normal); //Get the normal of the collisioObjects and call Bounce's function
         decrBulletLife();
     }

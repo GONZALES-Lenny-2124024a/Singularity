@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     private Vector3 lastFrameVelocity;
     private Rigidbody rb;
 
+    [SerializeField] private GameObject particleHit;
+
     [Header("Stats")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private int bulletLife = 3;
@@ -24,6 +26,13 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collisionObject) {
+        ContactPoint contact = collisionObject.contacts[0];
+        Vector3 pos = contact.point;
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        
+        GameObject particle = (GameObject) Instantiate(particleHit, pos, rot);
+        Destroy(particle, 0.5f);
+
         if(collisionObject.gameObject.tag == "Player") {
             Destroy(collisionObject.gameObject);
         }

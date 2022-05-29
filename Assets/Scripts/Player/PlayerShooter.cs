@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
+    [SerializeField] private GameObject particleBeforeShootPrefab;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
@@ -26,6 +27,9 @@ public class PlayerShooter : MonoBehaviour
 
     private void Shoot()
     {
+        GameObject particle = (GameObject) Instantiate(particleBeforeShootPrefab, firePoint.position, firePoint.rotation);
+        Destroy(particle,0.5f); 
+        
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         countdownActual = 0f;
     }

@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3872a5b7e14b4148800450aad9e919a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleBeforeShootPrefab: {fileID: 855379276796474684, guid: 2916f510260699f47a3527efdf69d4b8, type: 3}
   bulletPrefab: {fileID: 1452957146608860947, guid: 359105ad4e7d6064081411aef5724c3f, type: 3}
   firePoint: {fileID: 3911263345156147536}
   countdownBetweenShoot: 2

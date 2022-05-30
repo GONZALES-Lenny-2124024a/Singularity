@@ -26,12 +26,7 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collisionObject) {
-        ContactPoint contact = collisionObject.contacts[0];
-        Vector3 pos = contact.point;
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        
-        GameObject particle = (GameObject) Instantiate(particleHit, pos, rot);
-        Destroy(particle, 0.5f);
+        addParticle(collisionObject);
 
         if(collisionObject.gameObject.tag == "Player") {
             Destroy(collisionObject.gameObject);
@@ -51,5 +46,14 @@ public class Bullet : MonoBehaviour
         if (bulletLife <= 0) {
             Destroy(gameObject);
         }
+    }
+
+    void addParticle(Collision collisionObject) {
+        ContactPoint contact = collisionObject.contacts[0];
+        Vector3 pos = contact.point;
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        
+        GameObject particle = (GameObject) Instantiate(particleHit, pos, rot);
+        Destroy(particle, 0.5f);
     }
 }

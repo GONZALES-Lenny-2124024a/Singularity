@@ -27,9 +27,7 @@ public class PlayerShooter : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject particle = (GameObject) Instantiate(particleBeforeShootPrefab, firePoint.position, firePoint.rotation);
-        Destroy(particle,0.5f); 
-        
+        addParticle();
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         countdownActual = 0f;
     }
@@ -37,5 +35,10 @@ public class PlayerShooter : MonoBehaviour
     private bool CanShoot() 
     {
         return countdownActual >= countdownBetweenShoot;     //Countdown between two shots
+    }
+
+    void addParticle() {
+        GameObject particle = (GameObject) Instantiate(particleBeforeShootPrefab, firePoint.position, firePoint.rotation);
+        Destroy(particle,0.5f); 
     }
 }

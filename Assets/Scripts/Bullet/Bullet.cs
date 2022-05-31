@@ -49,9 +49,11 @@ public class Bullet : MonoBehaviour
     }
 
     void addParticle(Collision collisionObject) {
+        #region particle's Position and Rotation
         ContactPoint contact = collisionObject.contacts[0];
         Vector3 pos = contact.point;
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        #endregion
         
         GameObject particle = (GameObject) Instantiate(particleHit, pos, rot);
         Destroy(particle, 0.5f);

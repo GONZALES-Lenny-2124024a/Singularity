@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SideMapCubeMovement : MonoBehaviour
 {
-    private float beginTime;
-    private Animation animation;
+    [SerializeField] private float beginTime;
+    private Animation animationCube;
     private bool hasPlayed = false;
 
     void Start()
     {
-        animation = GetComponent<Animation>();
+        animationCube = GetComponent<Animation>();
         if (gameObject.tag == "CubePortal") {
             beginTime = 5;
-            animation.wrapMode = WrapMode.Once;
+            animationCube.wrapMode = WrapMode.Once;
         } else {
             beginTime = BeginTime();
         }
@@ -22,7 +22,7 @@ public class SideMapCubeMovement : MonoBehaviour
     void Update() {
         if((!hasPlayed) && (Time.realtimeSinceStartup > beginTime)) {
             hasPlayed = true;
-            animation.Play();
+            animationCube.Play();
         }
     }
 
